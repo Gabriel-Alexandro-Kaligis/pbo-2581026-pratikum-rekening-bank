@@ -1,15 +1,35 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class BankMini {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Rekening rekening = new Rekening("001", "Ani", 100000);
+
+        System.out.println("============ BANK MINI ============");
+        System.out.println("Rekening 001 a.n. Ani");
+
+        int menu;
+        do {
+            System.out.print("Menu (1 setor, 2 tarik, 3 info, 0 keluar): ");
+            menu = input.nextInt();
+
+            if (menu == 1) {
+                System.out.print("Jumlah: ");
+                int jumlah = input.nextInt();
+                System.out.println(rekening.setor(jumlah) ? "  Berhasil" : "  Ditolak");
+            } else if (menu == 2) {
+                System.out.print("Jumlah: ");
+                int jumlah = input.nextInt();
+                System.out.println(rekening.tarik(jumlah) ? "  Berhasil" : "  Ditolak");
+            } else if (menu == 3) {
+                rekening.cetakInfo();
+            } else if (menu != 0) {
+                System.out.println("Menu tidak dikenal");
+            }
+        } while (menu != 0);
+
+        System.out.println();
+        System.out.println("=========== SALDO AKHIR ===========");
+        rekening.cetakInfo();
     }
 }
