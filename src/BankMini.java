@@ -31,5 +31,8 @@ public class BankMini {
         System.out.println();
         System.out.println("=========== SALDO AKHIR ===========");
         rekening.cetakInfo();
+
+        // java: saldo has private access in Rekening
+        // rekening.saldo = 1000000;
     }
 }
